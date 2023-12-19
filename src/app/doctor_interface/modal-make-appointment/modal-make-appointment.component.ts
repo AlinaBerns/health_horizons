@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Patient } from 'src/app/models/patient.model';
 import { CalendarApiService } from 'src/app/services/calendar-api.service';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { PatientService } from 'src/app/services/patient.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-modal-make-appointment',
@@ -28,7 +30,10 @@ export class ModalMakeAppointmentComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: any,
     private calendarService: CalendarService,
     private calendarApiService: CalendarApiService,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private route: ActivatedRoute
     
   ) {}
 
@@ -82,6 +87,12 @@ export class ModalMakeAppointmentComponent implements OnInit{
         console.log('Событие успешно создано:', response);
         this.updateCalendar.emit();
         this.dialogRef.close();
+        this.snackBar.open('Event added successfully', 'Close', {
+          duration: 3000, // Время отображения уведомления в миллисекундах
+        });
+         this.router.navigate([], { relativeTo: this.route, skipLocationChange: true }).then(() => {
+        this.router.navigate([this.router.url]);
+      });
       
       },
       (error) => {

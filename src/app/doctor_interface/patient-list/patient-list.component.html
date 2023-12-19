@@ -1,4 +1,64 @@
-<div *ngFor="let patient of patients">
-    <p>{{ patient.id }} {{ patient.address }}</p>
-    <!-- Другие поля пациента, которые вы хотите отобразить -->
+<!-- patient-list.component.html -->
+<body>
+  
+
+<app-doctor-nav-bar></app-doctor-nav-bar>
+
+<div class="adaptation">
+  <div class="box">
+    <img src="/assets/11zon_cropped.png" alt="">
+    <div class="info">
+      Alina Berns <br>
+      THERAPIST <br>
+      <button>LOG OUT</button>
+    </div>
   </div>
+
+  <div class="patient-table-container" id="patientTableContainer">
+    <thead>
+      <tr>
+        <th style="width: 10px;">ID</th>
+        <th style="width: 65px;">Name</th>
+        <th style="width: 50px;">Family</th>
+        <th style="width: 90px;">Contact Number</th>
+        <th style="width: 150px;">Insurance</th>
+        <th></th>
+      </tr>
+    </thead>
+    <table class="patient-table">
+      
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{ patient.id }}</td>
+          <td>{{ patient.name }}</td>
+          <td>{{ patient.familyName }}</td>
+          <td>{{ patient.contactNumber }}</td>
+          <td>{{ patient.insurance }}</td>
+          <td style="background-color: rgba(19, 30, 44, 0.815);"><button (click)="selectPatient(patient)">view patient</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="patient-info-container" *ngIf="selectedPatient">
+    <!-- Отображение информации о пациенте -->
+    <h2>{{ selectedPatient.name }} {{ selectedPatient.familyName }}</h2>
+    <h4>{{ selectedPatient.insurance }}</h4>
+    <h3 style=" margin-top: 50px;">CONTACT INFORMATION</h3>
+    <div style="text-align: left; ">
+    <h4><strong>Contact Number:</strong> {{ selectedPatient.contactNumber }} </h4>
+    <h4><strong>Email:</strong> {{ selectedPatient.email }} </h4>
+    <h4><strong>Address:</strong> {{ selectedPatient.address }} </h4>
+  </div>
+  <h3 style=" margin-top: 50px;">PERSONAL INFORMATION</h3>
+    <div style="text-align: left; ">
+    <h4><strong>Gender:</strong> {{ selectedPatient.gender }} </h4>
+    <h4><strong>Age:</strong> {{ selectedPatient.age }} </h4>
+    <h4><strong>Contraindications:</strong> {{ selectedPatient.contraindications }} </h4>
+    <h4><strong>Allergies:</strong> {{ selectedPatient.allergies }} </h4>
+    
+  </div>
+   <button class="button_medical_history">VIEW MEDICAL HISTORY</button>
+    <!-- Добавьте другие поля для отображения информации о пациенте -->
+  </div>
+</div>
+</body>

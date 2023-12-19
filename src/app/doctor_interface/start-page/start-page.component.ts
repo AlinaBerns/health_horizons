@@ -204,6 +204,7 @@ export class StartPageComponent implements OnInit {
       
       // Обновляем календарь после успешного добавления события
       this.updateCalendar();
+      this.loadEvents();
     }
   }
 

@@ -60,6 +60,19 @@ body {
     font-size: 14px;
     font-family: Kaisei Decol;
   }
+
+  .calender::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .calender::-webkit-scrollbar-thumb {
+    background-color: rgba(49, 111, 211, 0.902);
+    border-radius: 10px;
+  }
+  
+  .calender::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.443);
+  }
   
   @keyframes fadeIn {
     from {

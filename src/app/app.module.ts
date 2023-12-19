@@ -17,9 +17,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientListComponent } from './doctor_interface/patient-list/patient-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     NavBarComponent,
     HomeComponent,
@@ -32,6 +37,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PatientListComponent,
   ],
   imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
     BrowserModule,
     AppRoutingModule,
     FullCalendarModule,
@@ -39,6 +47,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
     MatSelectModule
   ],
   providers: [],

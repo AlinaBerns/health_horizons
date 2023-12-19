@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "health_horizons:build:production"
+              "buildTarget": "health_horizons:build:production"
             },
             "development": {
-              "browserTarget": "health_horizons:build:development"
+              "buildTarget": "health_horizons:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "health_horizons:build"
+            "buildTarget": "health_horizons:build"
           }
         },
         "test": {

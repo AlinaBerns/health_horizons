@@ -1,0 +1,269 @@
+body {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    background-image: url(/assets/background_2.png);
+    background-size: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    height: auto;
+    width: 100%;
+    background-attachment: fixed;
+  }
+  
+  .text {
+    margin-top: 100px;
+    width: 963px;
+    height: 225px;
+    color: #d9d0d0;
+  
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+   
+  }
+  
+  .img {
+      animation: fadeIn 1s ease-in-out;
+    max-width: 100%; /* Максимальная ширина изображения равна ширине контейнера */
+    max-height: 40%; /* Сохранение пропорций при изменении размеров */
+    margin-top: 10%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  /* Дополнительные стили для медиазапроса (например, когда ширина экрана менее 600 пикселей) */
+  @media screen and (max-width: 800px) {
+    .img {
+      max-width: 60%; /* Максимальная ширина изображения равна ширине контейнера */
+      max-height: 30%; /* Сохранение пропорций при изменении размеров */
+      margin-top: 40%;
+    }
+  }
+  
+  .container {
+    margin-top: 5%;
+    min-width: 400px;
+    max-width: 1200px;
+    min-height: 450px;
+    max-height: 1300px;
+    background-color: rgba(12, 18, 27, 0.719);
+    border: 1px solid rgba(255, 255, 255, 0.443);
+   
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .container {
+      max-width: 60%; /* Максимальная ширина изображения равна ширине контейнера */
+      text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .container {
+      max-width: 60%; /* Максимальная ширина изображения равна ширине контейнера */
+      text-align: center;
+    }
+  }
+  .nav-row {
+      margin-top: 40px;
+    column-gap: 10px; /*отступ между колонками */
+    row-gap: 10px; /*Для мобильной адаптации. Данные будут выстраиваться в несколько строк*/
+    flex-wrap: wrap; /*перенос*/
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .nav-list {
+    list-style: none;
+    margin-right: 50px;
+    padding: 0;
+    display: flex;
+    column-gap: 30px; /*отступ между колонками */
+    row-gap: 20px; /*Для мобильной адаптации. Данные будут выстраиваться в несколько строк*/
+    flex-wrap: wrap; /*перенос*/
+  }
+  .nav-list__item > img {
+      max-width: 100%;
+      max-height: 100%;
+      transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav-list__item > img:hover {
+      transform: scale(1.2); /* Увеличиваем картинку в 1.1 раза */
+  }
+  
+  @media screen and (max-width: 800px) {
+      .nav-list__item>img {
+        max-width: 80%; /* Максимальная ширина изображения равна ширине контейнера */
+        max-height: 80%;
+        margin-left: 80px;
+        
+        text-align: center;
+      }
+  
+     
+    }
+  
+    .nav-list__item__bottom{
+      justify-content: space-between;
+      list-style: none;
+    margin-right: 50px;
+    margin-left: 50px;
+    padding: 0;
+    display: flex;
+    column-gap: 30px; /*отступ между колонками */
+    row-gap: 20px; /*Для мобильной адаптации. Данные будут выстраиваться в несколько строк*/
+    flex-wrap: wrap; /*перенос*/
+    color: #d9d0d0;
+    }
+  
+  .nav-list__item__bottom>a{
+      color: #d9d0d0;
+      text-decoration: none;
+      transition: 1s;
+  }
+  
+  .nav-list__item__bottom>a:active{
+      color: rgba(19, 30, 44, 0.952);
+      text-decoration: none;
+  }
+  
+  .nav-list__item__bottom>a:hover{
+      transition: 1s;
+      color: rgba(46, 119, 215, 0.952);
+      text-decoration: none;
+  }
+  
+  
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  input {
+    width: 400px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-left: 150px;
+    margin-right: 150px;
+    border-radius: 20px;
+    background: rgba(217, 217, 217, 0.304);
+    margin-top: 30px;
+    
+    color: #f9f7f7c6;
+    text-align: center;
+    font-size: large;
+    font-family: Kaisei Decol;
+  }
+
+  
+
+  @media screen and (max-width: 800px) {
+    input {
+        width: 300px;
+        height: 30px;
+        flex-shrink: 0;
+        margin-left: 50px;
+        margin-right: 50px;
+      
+      text-align: center;
+    }
+
+  }
+
+  input::-webkit-input-placeholder {
+    color: rgba(243, 238, 238, 0.66);
+    opacity: 70%;
+    text-align: center;
+    font-size: large;
+    font-family: Kaisei Decol;
+  }
+
+  button{
+    font-family: Kaisei Decol;
+
+    margin-top: 10%;
+    width: 200px;
+    height: 30px;
+    background-color: rgba(49, 111, 211, 0.902);
+    border: 1px solid rgba(255, 255, 255, 0.443);
+    color: #d9d0d0;
+    border-radius: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: 1s;
+    
+  }
+
+  button:hover{
+
+    background-color: rgba(26, 61, 117, 0.902);
+    color: #fff4f4;
+    border-radius: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.753);
+
+
+  }
+
+  button:active{
+    margin-top: 11%;
+    background-color: rgba(14, 33, 62, 0.995);
+
+  }
+
+
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+select {
+    
+    width: 400px;
+    height: 40px;
+    box-sizing: border-box;
+    /* Добавленные стили */
+    height: 40px;
+    border-radius: 20px;
+    background: rgba(56, 56, 56, 0.79);
+    color: #f9f7f7c6;
+    text-align: center;
+    font-size: large;
+    font-family: 'Kaisei Decol', sans-serif;
+}
+
+@media screen and (max-width: 800px) {
+    select {
+        width: 300px;
+        height: 30px;
+        flex-shrink: 0;
+        margin-left: 50px;
+        margin-right: 50px;
+      
+      text-align: center;
+    }
+
+  }
+
+option {
+    /* Стили для опций в списке */
+    text-align: center;
+    background-color: rgba(6, 6, 6, 0.874);
+    
+}
+  
+  

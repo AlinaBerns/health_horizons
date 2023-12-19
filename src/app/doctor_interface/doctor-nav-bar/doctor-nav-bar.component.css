@@ -1,0 +1,107 @@
+nav {
+    width: 100%;
+    border: 1px solid #000;
+
+    background-color: rgba(19, 30, 44, 0.952);
+    
+    
+    position: fixed;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.443);
+    animation: fadeIn 1s ease-in-out;
+    z-index: 1000; 
+    
+    
+  }
+  
+  .nav-row {
+    column-gap: 10px; /*отступ между колонками */
+    row-gap: 10px; /*Для мобильной адаптации. Данные будут выстраиваться в несколько строк*/
+    flex-wrap: wrap; /*перенос*/
+  }
+  
+  .nav-list {
+    list-style: none;
+    margin-right: 50px;
+    padding: 0;
+    display: flex;
+    column-gap: 30px; /*отступ между колонками */
+    row-gap: 20px; /*Для мобильной адаптации. Данные будут выстраиваться в несколько строк*/
+    flex-wrap: wrap; /*перенос*/
+  }
+  
+  .nav-list__item {
+    margin-right: 20px;
+  }
+  
+  .nav-list__link {
+    color: #d9d0d0;
+  
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Cinzel;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    transition: 1s;
+  }
+  
+  .nav-list__link:hover{
+      transition: 1s;
+      color: rgba(46, 119, 215, 0.952);
+  }
+  
+  
+  
+  /* Добавляем отступ справа для последнего элемента списка */
+  .nav-list__item:last-child {
+    margin-right: 0;
+  }
+  
+  /* Перемещаем список вправо */
+  .nav-list {
+    margin-left: auto;
+  }
+  
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+
+  .icons{
+    width: 170px;
+    height: 100px;
+    
+  }
+
+  @media screen and (max-width: 600px) {
+    .nav-list__link {
+      font-size: 14px;
+      
+    }
+
+   
+  }
+
+  @media screen and (max-width: 600px) {
+    img {
+      width: 300px;
+    
+    }
+
+   
+  }
+
+  img{
+    transition: 1s;
+  }
+  
+  

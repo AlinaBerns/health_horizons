@@ -1,0 +1,32 @@
+<body>
+    <app-doctor-nav-bar></app-doctor-nav-bar>
+    <div class="adaptation">
+    <div class="box">
+        <img src="/assets/11zon_cropped.png" alt="">
+        <div class="info">
+            Alina Berns <br>
+            THERAPIST <br>
+            <button>LOG OUT</button>
+        </div>
+    </div>
+   
+    <div class="calender">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+    <div class="today-events">
+        <h2 style="color: rgba(197, 203, 209, 0.836);" >TODAY EVENTS</h2>
+        <button (click)="openAppointmentModal2()">MAKE AN APPOINTMENT</button>
+        <ul>
+            <li *ngFor="let event of todayEvents" (click)="openAppointmentModal(event.id)">
+                <strong>{{event?.patient?.name}} {{event?.patient?.familyName}}</strong>
+                
+                <br>
+                {{ event?.start | date: 'HH:mm' }} - {{ event?.end | date: 'HH:mm'}}
+
+                
+            </li>
+        </ul>
+    </div>
+</div>
+  </body>
+  

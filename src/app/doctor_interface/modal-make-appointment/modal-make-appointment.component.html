@@ -1,0 +1,14 @@
+<div class="info">
+  <form>
+    <h2>NEW APPOINTMENT</h2>
+
+    <label for="appointmentDate">Date:</label>
+    <input type="date" id="appointmentDate" name="appointmentDate" lang="en" [(ngModel)]="appointmentData.appointmentDate" />
+
+    <label for="appointmentTime">Time:</label>
+    <input type="time" id="appointmentTime" name="appointmentTime" lang="en" [(ngModel)]="appointmentData.appointmentTime" />
+
+    <button (click)="onSaveClick()">Save</button>
+    <button (click)="onCancelClick()">Cancel</button>
+  </form>
+</div>

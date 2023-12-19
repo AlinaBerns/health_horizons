@@ -1,0 +1,12 @@
+<div class="info">
+  <h2>INFORMATION</h2>
+  <p>
+    <strong>PATIENT:</strong> {{ data?.patient?.name }}
+    {{ data?.patient?.familyName }}
+  </p>
+  <p>
+    <strong>TIME OF APPOINTMENT:</strong> {{ data?.startTime | date: 'HH:mm'}} -
+    {{ data?.endTime | date: 'HH:mm'}}
+  </p>
+  <button (click)="startAppointment()">START YOUR APPOINTMENT</button>
+</div>

@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 1400px;
+    width: 100%;
+    background-attachment: fixed;
+    background-image: url(/assets/background_3.png);
+  }
+  
+  .box, .calender {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 80px;
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .box {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 600px;
+    background-color: rgba(19, 30, 44, 0.952);
+    border: 1px solid rgba(255, 255, 255, 0.836);
+    display: block;
+    text-align: center;
+    
+    
+  }
+
+  .info{
+    
+    margin-top: 10px;
+    font-size: 25px;
+    color: rgba(214, 221, 221, 0.838);
+    font-family: Kaisei Decol;
+   line-height: 50px;
+  }
+  
+  .calender {
+    max-width: 800px;
+    min-width: 650px;
+    min-height: 400px;
+    max-height: 450px;
+    background-color: rgba(128, 150, 180, 0.806);
+    border: 1px solid rgba(255, 255, 255, 0.443);
+    
+    
+  }
+  
+  full-calendar {
+    width: 100%; /* Ширина 100% внутри родительского блока */
+    font-size: 14px;
+    font-family: Kaisei Decol;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Медиа-запрос для уменьшения экрана */
+  @media (max-width: 750px) {
+    .calender {
+      flex-direction: column; /* Один под другим вместо в строки */
+      align-items: center; /* Выравнивание по центру */
+      margin-top: 20px;
+      min-width: 100px;
+      max-height: 100px;
+    }
+
+    .box {
+        flex-direction: column; /* Один под другим вместо в строки */
+        align-items: center; /* Выравнивание по центру */
+        margin-top: 120px;
+      }
+  
+    .box, .calender, full-calendar {
+      width: 100%; /* Занимает всю доступную ширину */
+      max-width: none; /* Убираем ограничение по максимальной ширине */
+
+    }
+  }
+
+  .today-events {
+    border: 1px solid rgba(255, 255, 255, 0.836);
+    margin-top: 80px; /* Добавим небольшой отступ сверху */
+    margin-left: 5px;
+    animation: fadeIn 1s ease-in-out;
+    font-family: Kaisei Decol;
+    max-height: 450px;
+    max-width: 450px;
+    background-color: rgba(19, 30, 44, 0.952);
+    text-align: center;
+    min-width: 465px;
+   
+  }
+  
+  .today-events h2 {
+    font-size: 18px;
+    color: #333; /* Цвет текста заголовка */
+    
+  }
+  
+  .today-events ul {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 5px;
+    
+  }
+  
+  .today-events li {
+    margin-bottom: 10px; /* Отступ между событиями */
+    padding: 8px;
+    background-color: rgb(231, 231, 236); /* Цвет фона события */
+    border: 1px solid #ccc; /* Граница вокруг события */
+    border-radius: 5px; /* Закругление углов */
+  }
+  
+  /* Медиа-запрос для уменьшения экрана */
+  @media (max-width: 750px) {
+    .today-events {
+      margin-top: 20px; /* Изменяем отступ сверху для мобильных устройств */
+    }
+  
+    .today-events h2 {
+      font-size: 16px;
+    }
+  }
+  .calendar-box{
+    display: flexbox;
+  }
+  
+  .adaptation{
+    flex-direction: row;
+    display: flex;
+  }
+  @media (max-width: 750px) {
+    .adaptation {
+        flex-direction: column;
+    }
+    
+  }
+
+  .box>img{
+    width: 150px;
+    height: 150px;
+   
+    margin-top: 10px;
+  }
+  @media (max-width: 750px) {
+    .box>img {
+        width: 100px;
+    height: 100px;
+    margin:0%;
+    margin-top: 10px;
+    }
+    
+  }
+
+  
+
+  .box>.info>button{
+    font-family: Kaisei Decol;
+
+    margin-top: 3%;
+    width: 200px;
+    height: 30px;
+    background-color: rgba(49, 111, 211, 0.902);
+    border: 1px solid rgba(255, 255, 255, 0.443);
+    color: #d9d0d0;
+    border-radius: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: 1s;
+    
+  }
+
+  .box>.info>button:hover{
+
+    background-color: rgba(26, 61, 117, 0.902);
+    color: #fff4f4;
+    border-radius: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.753);
+
+
+  }
+
+  .box>.info>button:active{
+    margin-top: 4%;
+    background-color: rgba(14, 33, 62, 0.995);
+
+  }
+
+  .today-events>button{
+    font-family: Kaisei Decol;
+
+    margin-top: 3%;
+    width: 200px;
+    height: 30px;
+    background-color: rgba(49, 111, 211, 0.902);
+    border: 1px solid rgba(255, 255, 255, 0.443);
+    color: #d9d0d0;
+    border-radius: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: 1s;
+  }
+
+  .today-events>button:hover{
+
+    background-color: rgba(26, 61, 117, 0.902);
+    color: #fff4f4;
+    border-radius: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.753);
+
+  }
+
+  .today-events>button:active{
+    margin-top: 4%;
+    background-color: rgba(14, 33, 62, 0.995);
+  }
+

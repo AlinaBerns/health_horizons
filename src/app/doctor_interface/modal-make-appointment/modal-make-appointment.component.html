@@ -2,6 +2,11 @@
   <form>
     <h2>NEW APPOINTMENT</h2>
 
+    <label for="patientSelect">Patient:</label>
+<mat-select id="patientSelect" name="patientSelect" [(ngModel)]="appointmentData.patientId" (selectionChange)="onPatientSelectionChange($event)">
+  <mat-option *ngFor="let patient of patients" [value]="patient.id">{{ patient.name }} {{ patient.familyName }} {{ patient.insurance }}</mat-option>
+</mat-select>
+
     <label for="appointmentDate">Date:</label>
     <input type="date" id="appointmentDate" name="appointmentDate" lang="en" [(ngModel)]="appointmentData.appointmentDate" />
 

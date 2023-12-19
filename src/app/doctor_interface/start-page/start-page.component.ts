@@ -196,8 +196,15 @@ export class StartPageComponent implements OnInit {
 
   addToCalendar(appointmentDetails: any): void {
     console.log('Добавлено новое событие:', appointmentDetails);
-    // Добавляйте новое событие в this.appointments
-    // и затем вызовите this.updateCalendar();
+    
+    // Проверяем, определено ли свойство appointments
+    if (this.appointments) {
+      // Добавляем новое событие в this.appointments
+      this.appointments.push(appointmentDetails);
+      
+      // Обновляем календарь после успешного добавления события
+      this.updateCalendar();
+    }
   }
 
   openModal(startTime: string, endTime: string, patientInfo: any) {

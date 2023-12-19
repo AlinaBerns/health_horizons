@@ -59,7 +59,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "health_horizons:build:development"
+            "buildTarget": "health_horizons:build:development"
           },
           "configurations": {
             "production": {
@@ -99,3 +99,4 @@
     }
   }
 }
+

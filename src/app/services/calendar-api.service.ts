@@ -33,5 +33,7 @@ export class CalendarApiService {
     );
   }
 
-  
+  createAppointment(newEvent: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, newEvent);
+  }
 }

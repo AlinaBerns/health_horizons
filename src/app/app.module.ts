@@ -29,9 +29,6 @@ import { PatientListComponent } from './doctor_interface/patient-list/patient-li
     AppointmentModalComponent,
     ModalMakeAppointmentComponent,
     PatientListComponent,
-    
-    
-    
   ],
   imports: [
     BrowserModule,
@@ -42,6 +39,6 @@ import { PatientListComponent } from './doctor_interface/patient-list/patient-li
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

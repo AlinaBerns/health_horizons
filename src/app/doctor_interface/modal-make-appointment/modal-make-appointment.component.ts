@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './modal-make-appointment.component.html',
   styleUrls: ['./modal-make-appointment.component.css']
 })
-export class ModalMakeAppointmentComponent implements OnInit{
+export class ModalMakeAppointmentComponent implements OnInit {
   patients: Patient[] = [];
   selectedPatientId: number | undefined;
 
@@ -20,9 +20,9 @@ export class ModalMakeAppointmentComponent implements OnInit{
   patient!: Patient;
 
   appointmentData: any = {
-  appointmentDate: Date,
-  appointmentStartTime: Date,
-  appointmentEndTime: Date
+    appointmentDate: Date,
+    appointmentStartTime: Date,
+    appointmentEndTime: Date
   };
 
   constructor(
@@ -34,7 +34,6 @@ export class ModalMakeAppointmentComponent implements OnInit{
     private snackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute
-    
   ) {}
 
   ngOnInit(): void {
@@ -52,48 +51,59 @@ export class ModalMakeAppointmentComponent implements OnInit{
   onCancelClick(): void {
     this.dialogRef.close();
   }
-  
+
   onSaveClick(): void {
-    if (!this.appointmentData.appointmentDate || !this.appointmentData.appointmentTime) {
+    if (!this.appointmentData.appointmentDate || !this.appointmentData.appointmentStartTime) {
       console.log('Не все поля заполнены');
       return;
     }
-  
+
     // Проверьте, что пациент выбран
     if (!this.selectedPatientId) {
       console.log('Пациент не выбран');
       return;
     }
-  
+
     // Получите выбранную дату и время
     const selectedDate = this.appointmentData.appointmentDate;
-    const selectedTime = this.appointmentData.appointmentTime;
+    const selectedTime = this.appointmentData.appointmentStartTime;
     const durationInMilliseconds = 15 * 60 * 1000;
     // Создайте объект Date для начала и конца приема
     const startDateTime = new Date(`${selectedDate} ${selectedTime}`);
     const endDateTime = new Date(startDateTime.getTime() + durationInMilliseconds); // Замените durationInMilliseconds на продолжительность приема в миллисекундах
-  
+
     // Подготовьте данные для создания события
     const newEvent = {
       title: '',
-      start: startDateTime.toISOString(),
-      end: endDateTime.toISOString(),
-      patientId: this.selectedPatientId, 
+      start: startDateTime,
+      end: endDateTime,
+      patientId: this.selectedPatientId,
       appointmentInfo: {},
     };
 
     this.calendarApiService.createAppointment(newEvent).subscribe(
       (response) => {
         console.log('Событие успешно создано:', response);
+        const appointmentId = response.id;
+        this.appointmentData.appointmentId = appointmentId;
+        this.calendarApiService.getAppointmentInfo(appointmentId).subscribe(
+          (appointmentInfo) => {
+            console.log('Информация о событии получена:', appointmentInfo);
+            // Здесь вы можете обрабатывать полученные данные
+          },
+          (error) => {
+            console.error('Ошибка при получении информации о событии:', error);
+          }
+        );
         this.updateCalendar.emit();
         this.dialogRef.close();
         this.snackBar.open('Event added successfully', 'Close', {
           duration: 3000, // Время отображения уведомления в миллисекундах
         });
-         this.router.navigate([], { relativeTo: this.route, skipLocationChange: true }).then(() => {
-        this.router.navigate([this.router.url]);
-      });
-      
+        this.router.navigate([], { relativeTo: this.route, skipLocationChange: true }).then(() => {
+          this.router.navigate([this.router.url]);
+        });
+
       },
       (error) => {
         console.error('Ошибка при создании события:', error);

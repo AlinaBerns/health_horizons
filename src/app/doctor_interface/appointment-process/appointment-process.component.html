@@ -1,0 +1,28 @@
+<!-- appointment-process.component.html -->
+<div class="info">
+    <form>
+        <!-- Инпуты для анамнеза -->
+        <div>
+            <label for="chiefComplaint">Chief Complaint:</label>
+            <textarea id="chiefComplaint" name="chiefComplaint" [(ngModel)]="chiefComplaint"></textarea>
+        </div>
+
+        <div>
+            <label for="pastIllnesses">Past Illnesses:</label>
+            <textarea id="pastIllnesses" name="pastIllnesses" [(ngModel)]="pastIllnesses"></textarea>
+        </div>
+
+        <div>
+            <label for="surgicalHistory">Surgical History:</label>
+            <textarea id="surgicalHistory" name="surgicalHistory" [(ngModel)]="surgicalHistory"></textarea>
+        </div>
+
+        <div>
+            <label for="currentMedications">Current Medications:</label>
+            <textarea id="currentMedications" name="currentMedications" [(ngModel)]="currentMedications"></textarea>
+        </div>
+
+        <p>Remaining time: {{ formatTime(remainingTime) }}</p>
+        <button (click)="endAppointment()">End Appointment</button>
+    </form>
+</div>

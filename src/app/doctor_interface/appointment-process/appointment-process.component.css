@@ -1,0 +1,38 @@
+.info {
+    border: 1px solid rgba(255, 255, 255, 0.836);
+    color: #ebe2e2; 
+    animation: fadeIn 1s ease-in-out;
+    font-family: Kaisei Decol;
+    max-height: 450px;
+    max-width: 450px;
+    background-color: rgba(19, 30, 44, 0.952);
+    text-align: center;
+    min-width: 465px;
+   
+  }
+
+  .info>button{
+    font-family: Kaisei Decol;
+
+    margin: 3%;
+    width: 200px;
+    height: 30px;
+    background-color: rgba(49, 111, 211, 0.902);
+    border: 1px solid rgba(255, 255, 255, 0.443);
+    color: #d9d0d0;
+    border-radius: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: 1s;
+  }
+
+  .info>button:hover{
+    background-color: rgba(26, 61, 117, 0.902);
+    color: #fff4f4;
+    border-radius: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.753);
+  }
+
+  .info>button:active{
+    margin-top: 4%;
+    background-color: rgba(14, 33, 62, 0.995);
+  }

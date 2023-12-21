@@ -23,7 +23,7 @@ export class StartPageComponent implements OnInit {
   todayStr: string | undefined;
 
   constructor(
-    private calendarService: CalendarService,
+   
     private calendarApiService: CalendarApiService, // Внедрение нового сервиса
     private dialog: MatDialog,
     private cdr: ChangeDetectorRef,
@@ -100,65 +100,70 @@ export class StartPageComponent implements OnInit {
     );
   }
 
-  openAppointmentModal(id: number) {
-    console.log('Opening modal for event ID:', id);
+  openAppointmentModal(id: any) {
+    console.log('Открытие модального окна для события с ID:', id);
   
-    // Загружаем необходимую информацию о событии
-    this.calendarApiService.getAppointmentStartTime(id).subscribe(
-      (startTime: string) => {
-        console.log('Start time received:', startTime);
+    if (id && typeof id === 'number') {
+      // Получение времени начала приема
+      this.calendarApiService.getAppointmentStartTime(id).subscribe(
+        (startTime: string) => {
+          console.log('Время начала получено:', startTime);
   
-        // Загружаем конечное время события
-        this.calendarApiService.getAppointmentEndTime(id).subscribe(
-          (endTime: string) => {
-            console.log('End time received:', endTime);
+          // Получение времени окончания приема
+          this.calendarApiService.getAppointmentEndTime(id).subscribe(
+            (endTime: string) => {
+              console.log('Время окончания получено:', endTime);
   
-            // Получаем идентификатор пациента
-            this.calendarApiService.getPatientIdByAppointmentId(id).subscribe(
-              (patientId: number) => {
-                // Загружаем информацию о пациенте
-                this.patientService.getPatientById(patientId).subscribe(
-                  (patientInfo: any) => {
-                    console.log('PATIENTINFO:', patientInfo);
-                    // Открываем модальное окно, передавая время начала, конца и информацию о пациенте
-                    const dialogRef = this.dialog.open(AppointmentModalComponent, {
-                      width: '467px',
-                      data: {
-                        startTime: startTime,
-                        endTime: endTime,
-                        patient: patientInfo,
-                      },
-                    });
+              // Получение информации о пациенте
+              this.calendarApiService.getPatientIdByAppointmentId(id).subscribe(
+                (patientId: number) => {
+                  this.patientService.getPatientById(patientId).subscribe(
+                    (patientInfo: any) => {
+                      console.log('Информация о пациенте:', patientInfo);
   
-                    // Подписываемся на событие после закрытия модального окна
-                    dialogRef.afterClosed().subscribe(result => {
-                      console.log('Modal closed with result:', result);
-                      // Дополнительная логика при необходимости
-                    });
-                  },
-                  (error: any) => {
-                    console.error('Error loading patient info:', error);
-                  }
-                );
-              },
-              (error: any) => {
-                console.error('Error loading patient ID:', error);
-              }
-            );
-          },
-          (error: any) => {
-            console.error('Error loading appointment End time:', error);
-          }
-        );
-      },
-      (error: any) => {
-        console.error('Error loading appointment start time:', error);
-      }
-    );
+                      // Открытие модального окна, передавая необходимые данные
+                      const dialogRef = this.dialog.open(AppointmentModalComponent, {
+                        width: '467px',
+                        data: {
+                          startTime: startTime,
+                          endTime: endTime,
+                          patient: patientInfo,
+                          data: { appointmentId: id },
+                        },
+                      });
   
-    // Добавляем вызов метода загрузки событий сюда (если необходимо)
+                      // Подписка на событие после закрытия модального окна
+                      dialogRef.afterClosed().subscribe(result => {
+                        console.log('Модальное окно закрыто с результатом:', result);
+                        // Логика при необходимости после закрытия модального окна
+                      });
+                    },
+                    (error: any) => {
+                      console.error('Ошибка при загрузке информации о пациенте:', error);
+                    }
+                  );
+                },
+                (error: any) => {
+                  console.error('Ошибка при загрузке ID пациента:', error);
+                }
+              );
+            },
+            (error: any) => {
+              console.error('Ошибка при загрузке времени окончания приема:', error);
+            }
+          );
+        },
+        (error: any) => {
+          console.error('Ошибка при загрузке времени начала приема:', error);
+        }
+      );
+    } else {
+      console.error('Неверный идентификатор события:', id);
+      // Обработка ситуации, когда ID не является действительным числом (по вашему усмотрению)
+    }
     this.loadEvents();
   }
+  
   
   
   formatDate(date: Date): string {
@@ -174,7 +179,7 @@ export class StartPageComponent implements OnInit {
 
     dialogRef.componentInstance.updateCalendar.subscribe(() => {
       // Подписываемся на Observable и обрабатываем результат
-      this.calendarService.getAllAppointments().subscribe(
+      this.calendarApiService.getAllEvents().subscribe(
         (events: any[]) => {
           this.appointments = events;
           this.updateCalendar();

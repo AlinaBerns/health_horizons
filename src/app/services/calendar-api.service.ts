@@ -12,7 +12,12 @@ export class CalendarApiService {
   constructor(private http: HttpClient) {}
 
   getAllEvents(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      tap(
+        (events) => console.log('Events loaded successfully:', events),
+        (error) => console.error('Error loading events:', error)
+      )
+    );
   }
 
   getAppointmentStartTime(appointmentId: number): Observable<string> {
@@ -35,5 +40,9 @@ export class CalendarApiService {
 
   createAppointment(newEvent: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, newEvent);
+  }
+
+  getAppointmentIdByEventId(eventId: number): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/${eventId}/appointmentId`);
   }
 }

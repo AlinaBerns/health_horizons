@@ -13,7 +13,7 @@ import { DoctorNavBarComponent } from './doctor_interface/doctor-nav-bar/doctor-
 import { AppointmentModalComponent } from './doctor_interface/appointment-modal/appointment-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalMakeAppointmentComponent } from './doctor_interface/modal-make-appointment/modal-make-appointment.component';
-import { FormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { PatientListComponent } from './doctor_interface/patient-list/patient-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { AppointmentProcessComponent } from './doctor_interface/appointment-process/appointment-process.component';
+import { CalendarApiService } from './services/calendar-api.service';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AppointmentModalComponent,
     ModalMakeAppointmentComponent,
     PatientListComponent,
+    AppointmentProcessComponent
   ],
   imports: [
     MatPaginatorModule,
@@ -44,13 +49,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AppRoutingModule,
     FullCalendarModule,
     MatDialogModule,
-    FormsModule,
+  FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+
     MatSelectModule
   ],
-  providers: [],
+  providers: [CalendarApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
